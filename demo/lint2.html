@@ -18,13 +18,6 @@
 <script src="../addon/lint2/css-lint.js"></script>
 <style type="text/css">
       .CodeMirror {border: 1px solid black;}
-
-.console-wrapper {
-  /*position: absolute;*/
-  bottom: 0;
-  background: #fff;
-  z-index: 10;
-}
     </style>
 
 
@@ -97,7 +90,13 @@ li.last {
     lineNumbers: true,
     mode: "css",
     gutters: ["CodeMirror-lint-markers"],
-    lint: true
+    lint: true,
+    lintOpt: {
+      console: true,
+      line: true,
+      under: true,
+      tooltip: true
+    }
   });
 </script>
 
