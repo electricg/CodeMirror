@@ -72,7 +72,7 @@
     return options;
   }
 
-  function clearMarks(cm) {
+  function underClear(cm) {
     var state = cm.state.lint;
     for (var i = 0; i < state.marked.length; ++i)
       state.marked[i].clear();
@@ -187,8 +187,8 @@
   function consoleClick(event, cm) {
     var target = event.target;
     if (target.className.indexOf('console-log-line') !== -1) {
-      var ch = target.getAttribute('data-ch');
-      var line = target.getAttribute('data-line');
+      var ch = target.getAttribute('data-ch') * 1;
+      var line = target.getAttribute('data-line') * 1;
       var reason = target.getAttribute('data-reason');
       var lineHeight = cm.defaultTextHeight();
       cm.setCursor({ line: line, ch: ch });
@@ -234,7 +234,9 @@
   function updateLinting(cm, annotationsNotSorted) {
     var state = cm.state.lint, options = state.options;
     
-    clearMarks(cm);
+    if (cm.options.lintOpt.under) {
+      underClear(cm);
+    }
     
     if (state.hasGutter) {
       gutterReset(cm);
@@ -331,7 +333,7 @@
     }
     for (var key in defaults) {
       if (defaults.hasOwnProperty(key)) {
-        cm.options.lintOpt[key] = cm.options.lintOpt[key] || defaults[key];
+        cm.options.lintOpt[key] = (cm.options.lintOpt[key] !== undefined) ? cm.options.lintOpt[key] : defaults[key];
       }
     }
 
@@ -340,7 +342,9 @@
     }
     
     if (old && old != CodeMirror.Init) {
-      clearMarks(cm);
+      if (cm.options.lintOpt.under) {
+        underClear(cm);
+      }
 
       if (cm.state.lint.hasGutter) {
         gutterReset(cm);

@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../lib/codemirror.css">
 <link rel="stylesheet" href="../addon/lint2/lint.css">
 <script src="../lib/codemirror.js"></script>
+<script src="../addon/selection/active-line.js"></script>
 <!-- <script src="../mode/javascript/javascript.js"></script> -->
 <script src="../mode/css/css.js"></script>
 <!-- <script src="https://rawgit.com/jshint/jshint/master/dist/jshint.js"></script> -->
@@ -88,14 +89,14 @@ li.last {
 <script>  
   var editor_css = CodeMirror.fromTextArea(document.getElementById("code-css"), {
     lineNumbers: true,
+    styleActiveLine: true,
     mode: "css",
     gutters: ["CodeMirror-lint-markers"],
     lint: true,
     lintOpt: {
       console: true,
-      consoleParent: '', // the dom element to which append the console box
       line: true,
-      under: true,
+      under: false,
       tooltip: true
       // gutter option doesn't exist, it takes from main gutters property
     }
