@@ -1,0 +1,71 @@
+<!doctype html>
+
+<title>CodeMirror: Toolbar Demo</title>
+<meta charset="utf-8"/>
+<link rel=stylesheet href="../doc/docs.css">
+
+<link rel="stylesheet" href="../lib/codemirror.css">
+<link rel="stylesheet" href="../addon/toolbar/toolbar.css">
+<link rel="stylesheet" href="../addon/toolbar/markdown/index.css">
+<script src="../lib/codemirror.js"></script>
+<script src="../mode/markdown/markdown.js"></script>
+<script src="../addon/toolbar/toolbar.js"></script>
+<script src="../addon/toolbar/markdown/index.js"></script>
+<style type="text/css">
+      .CodeMirror {border: 1px solid black;}
+    </style>
+<div id=nav>
+  <a href="http://codemirror.net"><img id=logo src="../doc/logo.png"></a>
+
+  <ul>
+    <li><a href="../index.html">Home</a>
+    <li><a href="../doc/manual.html">Manual</a>
+    <li><a href="https://github.com/marijnh/codemirror">Code</a>
+  </ul>
+  <ul>
+    <li><a class=active href="#">Toolbar</a>
+  </ul>
+</div>
+
+<article>
+<h2>Toolbar Demo</h2>
+
+<form><textarea id="code" name="code"># A First Level Header
+
+**Bold** text in a normal-size paragraph.
+
+And a very long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long, wrapped line with a piece of **big** text inside of it.
+
+## A Second Level Header
+
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
+
+The quick brown fox jumped over the lazy
+dog's back.
+
+### Header 3
+
+> This is a blockquote.
+> 
+> This is the second paragraph in the blockquote.
+>
+> ## This is an H2 in a blockquote       
+</textarea></form>
+
+<script id="script">
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    lineWrapping: true,
+    mode: "markdown",
+    toolbar: true,
+    toolbarOpt: {
+      buttons: buttons_markdown
+    }
+  });
+</script>
+
+</article>
+</body>
+</html>

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'icons';
+  src:url('icons.eot');
+  src:url('icons.eot?#iefix') format('embedded-opentype'),
+    url('icons.woff') format('woff'),
+    url('icons.ttf') format('truetype'),
+    url('icons.svg#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="toolbar-button-"], [class*=" toolbar-button-"] {
+  font-family: 'icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.toolbar-button-new_line:before {
+  content: "\e600";
+}
+.toolbar-button-inline_code:before {
+  content: "\e601";
+}
+.toolbar-button-redo:before {
+  content: "\e602";
+}
+.toolbar-button-undo:before {
+  content: "\e603";
+}
+.toolbar-button-bold:before {
+  content: "\e604";
+}
+.toolbar-button-italic:before {
+  content: "\e605";
+}
+.toolbar-button-image:before {
+  content: "\e606";
+}
+.toolbar-button-link:before {
+  content: "\e607";
+}
+.toolbar-button-list_bullets:before {
+  content: "\e608";
+}
+.toolbar-button-list_numbers:before {
+  content: "\e609";
+}
+.toolbar-button-strikethrough:before {
+  content: "\e60a";
+}
+.toolbar-button-blockquote:before {
+  content: "\e60b";
+}
+.toolbar-button-horizontal_rule:before {
+  content: "\e60c";
+}
+.toolbar-button-block_code:before {
+  content: "\e60d";
+}
+.toolbar-button-heading_1:before,
+.toolbar-button-heading_2:before,
+.toolbar-button-heading_3:before,
+.toolbar-button-heading_4:before,
+.toolbar-button-heading_5:before,
+.toolbar-button-heading_6:before {
+  content: "H1";
+  font-family: serif;
+  font-size: 16px;
+}
+.toolbar-button-heading_2:before { content: "H2"; }
+.toolbar-button-heading_3:before { content: "H3"; }
+.toolbar-button-heading_4:before { content: "H4"; }
+.toolbar-button-heading_5:before { content: "H5"; }
+.toolbar-button-heading_6:before { content: "H6"; }
