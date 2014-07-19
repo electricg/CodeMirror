@@ -337,10 +337,6 @@
       }
     }
 
-    if (cm.options.lintOpt.console) {
-      consoleInit(cm);
-    }
-    
     if (old && old != CodeMirror.Init) {
       if (cm.options.lintOpt.under) {
         underClear(cm);
@@ -360,10 +356,20 @@
       for (var i = 0; i < gutters.length; ++i) if (gutters[i] == GUTTER_ID) hasLintGutter = true;
       var state = cm.state.lint = new LintState(cm, parseOptions(cm, val), hasLintGutter);
       cm.on('change', onChange);
+
+      if (cm.options.lintOpt.console) {
+        consoleInit(cm);
+      }
+
       if (cm.options.lintOpt.tooltip)
         CodeMirror.on(cm.getWrapperElement(), 'mouseover', state.onMouseOver);
 
       startLinting(cm);
     }
+
+    // probably to improve according to real case scenarios
+    cm.updateLinting = function(annotationsNotSorted) {
+      updateLinting(cm, annotationsNotSorted);
+    };
   });
 });
