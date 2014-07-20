@@ -11,9 +11,19 @@
 <script src="../mode/markdown/markdown.js"></script>
 <script src="../addon/toolbar/toolbar.js"></script>
 <script src="../addon/toolbar/markdown/index.js"></script>
+
+<script src="https://rawgit.com/chjj/marked/master/marked.min.js"></script>
 <style type="text/css">
-      .CodeMirror {border: 1px solid black;}
-    </style>
+  .CodeMirror {
+    border: 1px solid #CCC;
+  }
+  iframe {
+    border: 1px solid #CCC;
+    box-sizing: border-box;
+    height: 300px;
+    width: 100%;
+  }
+</style>
 <div id=nav>
   <a href="http://codemirror.net"><img id=logo src="../doc/logo.png"></a>
 
@@ -54,6 +64,8 @@ dog's back.
 > ## This is an H2 in a blockquote       
 </textarea></form>
 
+<iframe id="preview"></iframe>
+
 <script id="script">
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     lineNumbers: true,
@@ -63,6 +75,23 @@ dog's back.
     toolbarOpt: {
       buttons: buttons_markdown
     }
+  });
+
+  var previewFrame = document.getElementById('preview');
+  var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+
+  function updatePreview() {
+    preview.open();
+    preview.write(marked(editor.getValue()));
+    preview.write('<link rel="stylesheet" href="http://rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css">');
+    preview.write('<style>.markdown-body{overflow:auto;}</style>');
+    preview.close();
+    preview.body.className = 'markdown-body';
+  }
+
+  updatePreview();
+  editor.on('change', function() {
+    updatePreview();
   });
 </script>
 
