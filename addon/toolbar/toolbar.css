@@ -4,6 +4,8 @@
   border-right: 1px solid #ccc;
   background: #eee;
   min-height: 10px;
+  position: relative;
+  z-index: 3;
 }
 
 .toolbar-button-delimiter {
@@ -13,6 +15,32 @@
   margin: 0 3px;
   vertical-align: middle;
   width: 1px;
+}
+
+.toolbar-select {
+  background: inherit;
+  position: relative;
+}
+.toolbar-select.open {
+  border-color: #CCC;
+}
+.toolbar-select:after {
+  content: '\25be';
+  font-size: 12px;
+  vertical-align: super;
+}
+.toolbar-select-container {
+  background: inherit;
+  border: 1px solid #ccc;
+  border-top: 0 none;
+  display: none;
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  margin-top: -1px;
+}
+.open .toolbar-select-container {
+  display: block;
 }
 
 .toolbar-button {
@@ -29,6 +57,16 @@
 }
 .toolbar-button:hover {
   border-color: #CCC;
+}
+.toolbar-select .toolbar-button {
+  margin-left: -1px;
+}
+.toolbar-select .toolbar-button:last-child {
+  margin-bottom: -1px;
+}
+.toolbar-select .toolbar-button:hover {
+  border-color: #CCC transparent;
+  border-radius: 0;
 }
 .toolbar-button:before {
   font-size: 14px;

@@ -31,6 +31,9 @@
       if (buttons[i].type === 'delimiter') {
         cm.toolbar.wrapper.appendChild(toolbarDelimiter());
       }
+      else if (buttons[i].type === 'select') {
+        cm.toolbar.wrapper.appendChild(toolbarSelect(cm, buttons[i]));
+      }
       else {
         cm.toolbar.wrapper.appendChild(toolbarButton(cm, buttons[i]));
       }
@@ -57,6 +60,27 @@
     var delimiter = document.createElement('div');
     delimiter.className = 'toolbar-button-delimiter';
     return delimiter;
+  }
+
+  function toolbarSelect(cm, obj) {
+    var select = document.createElement('div');
+    var buttons = document.createElement('div');
+    select.className = 'toolbar-button toolbar-select toolbar-button-' + obj.id;
+    select.setAttribute('title', obj.title);
+    buttons.className = 'toolbar-select-container';
+    select.appendChild(buttons);
+    for (var i = 0; i < obj.items.length; i++) {
+      buttons.appendChild(toolbarButton(cm, obj.items[i]));
+    }
+    CodeMirror.on(select, 'click', function() {
+      if (select.className.indexOf('open') === -1) {
+        select.className += ' open';
+      }
+      else {
+        select.className = select.className.replace('open', '');
+      }
+    });
+    return select;
   }
 
   function insert(cm, obj) {

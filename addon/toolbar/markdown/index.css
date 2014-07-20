@@ -65,6 +65,9 @@
 .toolbar-button-block_code:before {
   content: "\e60d";
 }
+.toolbar-button-heading:before {
+  content: "\e60e";
+}
 .toolbar-button-heading_1:before,
 .toolbar-button-heading_2:before,
 .toolbar-button-heading_3:before,
