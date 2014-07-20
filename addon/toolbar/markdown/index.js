@@ -25,6 +25,6 @@ buttons_markdown = [
   {title: 'Image',         type: 'wrapper', left: '![', right: '](http://)', id: 'image'},
   {title: 'Link',          type: 'wrapper', left: '[', right: '](http://)', id: 'link'},
   {type: 'delimiter'},
-  {title: 'Horizontal Rule', type: 'wrapper', left: '---', id: 'horizontal_rule'},
+  {title: 'Horizontal Rule', type: 'wrapper', left: '\n---\n', id: 'horizontal_rule'},
   {title: 'Hard Linebreak', type: 'wrapper', left: '   \n', id: 'new_line'}
 ];
