@@ -36,6 +36,7 @@
   background: inherit;
   border: 1px solid #ccc;
   border-top: 0 none;
+  border-radius: 0 0 3px 3px;
   display: none;
   position: absolute;
   left: -1px;
