@@ -21,6 +21,9 @@
   background: inherit;
   position: relative;
 }
+.toolbar-select:focus {
+  outline: 0 none;
+}
 .toolbar-select.open {
   border-color: #CCC;
 }

@@ -11,6 +11,14 @@
 })(function(CodeMirror) {
   'use strict';
 
+  function cancelBubble(e) {
+    var evt = e ? e:window.event;
+    if (evt.stopPropagation)
+      evt.stopPropagation();
+    if (evt.cancelBubble!=null)
+      evt.cancelBubble = true;
+  }
+
   function toolbarInit(cm) {
     var wrapper = document.createElement('div');
     wrapper.className = 'toolbar-wrapper';
@@ -46,6 +54,7 @@
     button.setAttribute('title', obj.title);
     button.innerHTML = obj.title;
     CodeMirror.on(button, 'click', function(event) {
+      cancelBubble(event);
       if (obj.type === 'codemirror') {
         cm[obj.fn]();
       }
@@ -67,6 +76,7 @@
     var buttons = document.createElement('div');
     select.className = 'toolbar-button toolbar-select toolbar-button-' + obj.id;
     select.setAttribute('title', obj.title);
+    select.setAttribute('tabindex', -1);
     buttons.className = 'toolbar-select-container';
     select.appendChild(buttons);
     for (var i = 0; i < obj.items.length; i++) {
@@ -79,6 +89,9 @@
       else {
         select.className = select.className.replace('open', '');
       }
+    });
+    CodeMirror.on(select, 'blur', function() {
+      select.className = select.className.replace('open', '');
     });
     return select;
   }
